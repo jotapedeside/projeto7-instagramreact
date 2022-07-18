@@ -2,8 +2,10 @@ import ReactDOM  from "react-dom";
 import Topbar from "./components/Topbar";
 import Story from "./components/Story";
 import Post from "./components/Post"
+import Usuario from "./components/Usuario";
 import Sugestao from "./components/Sugestao";
-import {ImagesPosts, ImagesProfPics, ImagesStories} from "./assets/img"; 
+import Mobile from "./components/Mobile";
+import {ImagesPosts, ImagesProfPics} from "./assets/img";
 
 function App(){
   const posts = [{
@@ -69,7 +71,7 @@ function App(){
     profilePic: ImagesProfPics.SmallCuteCats,
     reason: "Segue você"
   }];
-
+  const user = {username: "catanacomics", name: "Catana", profilePic: ImagesProfPics.CatanaComics};
     return(
       <div class="root">
         <Topbar></Topbar>
@@ -98,13 +100,10 @@ function App(){
           </div>
           
           <div class="sidebar">
-            <div class="usuario">
-                <img src={ImagesProfPics.CatanaComics} />
-                <div class="texto">
-                  <strong>catanacomics</strong>
-                  Catana
-                </div>
-            </div>
+            <Usuario
+            username = {user.username}
+            name = {user.name}
+            profilePic = {user.profilePic}/>
 
             <div class="sugestoes">
               <div class="titulo">
@@ -128,6 +127,7 @@ function App(){
           </div>
 
         </div>
+        <Mobile/>
       </div>
     )
 }

@@ -2,6 +2,8 @@ import React from "react";
 
 const Post = (props) => {
   const {name, profilePic, content, likedBy, likes} = props;
+
+  const [like, setLike] = React.useState("heart-outline");
     return (
       <div class="post">
         <div class="topo">
@@ -21,7 +23,15 @@ const Post = (props) => {
           <div class="fundo">
             <div class="acoes">
               <div>
-                <ion-icon name="heart-outline"></ion-icon>
+              <ion-icon 
+              name={like}
+              onClick={() => {
+                if (like === "heart-outline") {
+                  setLike("heart");
+                } else {
+                  setLike("heart-outline");
+                }
+              }}></ion-icon>
                 <ion-icon name="chatbubble-outline"></ion-icon>
                 <ion-icon name="paper-plane-outline"></ion-icon>
               </div>
