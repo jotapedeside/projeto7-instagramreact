@@ -1,35 +1,133 @@
 import ReactDOM  from "react-dom";
-import Topbar from "./Components/Topbar";
-import Post from "./Components/Post"
-import {ImagesTopbar, ImagesPosts, ImagesProfPics, ImagesStories} from "./Assets/img"; 
+import Topbar from "./components/Topbar";
+import Story from "./components/Story";
+import Post from "./components/Post"
+import Sugestao from "./components/Sugestao";
+import {ImagesPosts, ImagesProfPics, ImagesStories} from "./assets/img"; 
 
 function App(){
   const posts = [{
-    name: "teste",
-    profilePic: ImagesPosts.Dog,
-    content: <img src={ImagesPosts.Dog}/>,
-    likedBy: {name: "respondeai", profilePic:ImagesPosts.Dog},
-    likes: "105.503"
+    name: "meowed",
+    profilePic: ImagesProfPics.Meowed,
+    content: <img src={ImagesPosts.Cat}/>,
+    likedBy: {name: "respondeai", profilePic:ImagesProfPics.RespondeAi},
+    likes: "101.523"
 
   },{
-    name: "teste2",
-    profilePic: ImagesPosts.Dog,
+    name: "barked",
+    profilePic: ImagesProfPics.Barked,
     content: <img src={ImagesPosts.Dog}/>,
-    likedBy: {name: "asdasdasd", profilePic:ImagesPosts.Dog},
-    likes: "107.503"
-
+    likedBy: {name: "adorable_animals", profilePic:ImagesProfPics.AdorableAnimals},
+    likes: "99.159"
   }];
+  const stories = [{
+    name: "9gag",
+    profilePic: ImagesProfPics.NineGag
+  },{
+    name: "meowed",
+    profilePic: ImagesProfPics.Meowed
+  },{
+    name: "barked",
+    profilePic: ImagesProfPics.Barked
+  },{
+    name: "nathanwpylestrangeplanet",
+    profilePic: ImagesProfPics.NathanWPyleStrangePlanet
+  },{
+    name: "wawawiwacomics",
+    profilePic: ImagesProfPics.WawawiwaComics
+  },{
+    name: "respondeai",
+    profilePic: ImagesProfPics.RespondeAi
+  },{
+    name: "filomoderna",
+    profilePic: ImagesProfPics.FiloModerna
+  },{
+    name: "memeriagourmet",
+    profilePic: ImagesProfPics.MemeriaGourmet
+  },{
+    name: "chibirdart",
+    profilePic: ImagesProfPics.ChibirdArt
+  }];
+  const sugestoes = [{
+    name: "bad.vibes.memes",
+    profilePic: ImagesProfPics.BadVibesMemes,
+    reason: "Segue você"
+  },{
+    name: "chibirdart",
+    profilePic: ImagesProfPics.ChibirdArt,
+    reason: "Segue você"
+  },{
+    name: "razoesparaacreditar",
+    profilePic: ImagesProfPics.RazoesParaAcreditar,
+    reason: "Novo no Instagram"
+  },{
+    name: "adorable_animals",
+    profilePic: ImagesProfPics.AdorableAnimals,
+    reason: "Segue você"
+  },{
+    name: "smallcutecats",
+    profilePic: ImagesProfPics.SmallCuteCats,
+    reason: "Segue você"
+  }];
+
     return(
-      <div>
+      <div class="root">
         <Topbar></Topbar>
-        {posts.map(post => <Post
-          name = {post.name}
-        profilePic = {post.profilePic}
-        content = {post.content}
-        likedBy = {post.likedBy}
-        likes = {post.likes}
-        />)}
         
+        <div class="corpo">
+          <div class="esquerda">            
+            <div class="stories">
+              {stories.map(story => <Story
+              name = {story.name}
+              profilePic = {story.profilePic}
+              />)}
+              <div class="setinha">
+                <ion-icon name="chevron-forward-circle"></ion-icon>
+              </div>
+            </div>
+
+            <div class="posts">
+              {posts.map(post => <Post
+              name = {post.name}
+              profilePic = {post.profilePic}
+              content = {post.content}
+              likedBy = {post.likedBy}
+              likes = {post.likes}
+              />)}
+            </div>
+          </div>
+          
+          <div class="sidebar">
+            <div class="usuario">
+                <img src={ImagesProfPics.CatanaComics} />
+                <div class="texto">
+                  <strong>catanacomics</strong>
+                  Catana
+                </div>
+            </div>
+
+            <div class="sugestoes">
+              <div class="titulo">
+                Sugestões para você
+                <div>Ver tudo</div>
+              </div>
+
+              {sugestoes.map(sugestao => <Sugestao
+              name = {sugestao.name}
+              profilePic = {sugestao.profilePic}
+              reason = {sugestao.reason}/>)}
+            </div>
+
+            <div class="links">
+              Sobre • Ajuda • Imprensa • API • Carreiras • Privacidade • Termos • Localizações • Contas mais relevantes • Hashtags • Idioma
+            </div>
+
+            <div class="copyright">
+              © 2021 INSTAGRAM DO FACEBOOK
+            </div>
+          </div>
+
+        </div>
       </div>
     )
 }
